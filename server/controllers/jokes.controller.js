@@ -29,7 +29,7 @@ module.exports.findRandomJoke = (req, res) => {
 
 //CREATE A JOKE
 module.exports.createJoke = (req, res) => {
-    Joke.create(req.body)
+    Joke.createOne(req.body)
     .then((createdJoke) => res.json({ joke: createdJoke }))
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
@@ -41,9 +41,9 @@ module.exports.updateJoke = (req, res) => {
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
 
-//DETELE A JOKE
+//DELETE A JOKE
 module.exports.deleteJoke = (req, res) => {
-    Joke.deteleOne({ _id: req.params.id })
+    Joke.deleteOne({ _id: req.params.id })
     .then((result) => res.json({ result: result }))
     .catch((err) => res.json({ message: "Something went wrong", error: err }));
 };
